@@ -2,6 +2,7 @@ import validator from "validator";
 import bcrypt from 'bcrypt'
 import { v2 as cloudinary} from "cloudinary"
 import doctorModel from "../models/doctorModel.js"
+import jwt from 'jsonwebtoken'
 
 
 // API for adding doctor
@@ -10,7 +11,7 @@ const addDoctor = async (req, res) => {
         const {name, email, password, speciality, degree, experience, about, fees, address} = req.body
         const imageFile = req.file
         
-        console.log({name, email, password, speciality, degree, experience, about, fees, address}, imageFile);
+        //console.log({name, email, password, speciality, degree, experience, about, fees, address}, imageFile);
         // checking for all datat too add doctor
         if(!name || !email || !password || !speciality || !degree || !experience || !about || !fees || !address){
             return res.json({success:false, message:"Missing Details"})
@@ -32,10 +33,6 @@ const addDoctor = async (req, res) => {
 
         //upload image to cloudinary
         const imageUpload = await cloudinary.uploader.upload(imageFile.path, {resource_type:"image"})
-        //const imageUpload = await cloudinary.uploader.upload(req.file.path, { resource_type: "image" });
-
-        //console.log("Uploaded File:", req.file);
-
         const imageUrl = imageUpload.secure_url
 
 
@@ -63,4 +60,21 @@ const addDoctor = async (req, res) => {
     }
 }
 
-export {addDoctor}
+//API For admin Login
+const loginAdmin = async(req, res) => {
+    try {
+        const {email, password} = req.body
+        if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+            const token = jwt.sign(email+password, process.env.JWT_SECRET)
+            res.json({success:true,token})
+        } else{
+            res.json({success:false, message:"Invalid credentials"})
+        }
+    } catch (error){
+        console.log(error)
+        res.json({success:false,message:error.message})
+    }
+}
+
+
+export {addDoctor, loginAdmin}
