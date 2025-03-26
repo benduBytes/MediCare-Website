@@ -25,6 +25,8 @@ const Appointment = () => {
   }
 
   const getAvailableSlots = async() => {
+
+
     setDocSlots([])
 
     // getting current data
@@ -115,7 +117,9 @@ const Appointment = () => {
   },[doctors,docId])
 
   useEffect(()=>{
-    getAvailableSlots()
+    if (docInfo) {
+      getAvailableSlots();
+    }
   },[docInfo])
 
   useEffect(()=>{
