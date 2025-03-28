@@ -1,39 +1,39 @@
-# # Node.js dependencies
-# node_modules/
-# npm-debug.log*
-# yarn-debug.log*
-# yarn-error.log*
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# # Environment variables
-# .env
-# .env.local
-# .env.development
-# .env.production
-# .env.test
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
 
-# # Logs
-# logs
-# *.log
-# npm-debug.log*
-# yarn-debug.log*
-# debug.log*
-# .log
-# pids
-# *.pid
-# *.seed
-# *.pid.lock
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+debug.log*
+.log
+pids
+*.pid
+*.seed
+*.pid.lock
 
-# # Binaries
-# dist/
-# build/
+# Binaries
+dist/
+build/
 
-# # Database
-# *.sqlite
-# *.sqlite-journal
-# *.db
+# Database
+*.sqlite
+*.sqlite-journal
+*.db
 
-# # Miscellaneous
-# .DS_Store
-# Thumbs.db
-# .idea/
-# .vscode/
+# Miscellaneous
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
