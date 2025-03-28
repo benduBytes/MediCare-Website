@@ -12,7 +12,6 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import FloatingChat from './components/FloatingChat';
 
 const App = () => {
   return (
@@ -30,7 +29,6 @@ const App = () => {
         <Route path='/my-appointments' element={<MyAppointments />} />
         <Route path='/appointment/:docId' element={<Appointment />} />
       </Routes>
-      <FloatingChat />
       <Footer />
     </div>
   )
